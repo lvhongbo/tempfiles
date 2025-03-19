@@ -1,6 +1,4 @@
-# 使用带有CUDA支持的NVIDIA CUDA基础镜像
-# 请根据您的服务器CUDA版本选择合适的镜像
-# 例如，如果您使用的是CUDA 12.6，请使用以下镜像
+# 使用带有CUDA 12.6支持的NVIDIA CUDA基础镜像
 FROM nvidia/cuda:12.6.0-base-ubuntu20.04
 
 # 设置工作目录
@@ -18,10 +16,8 @@ RUN apt-get update && \
 # 将python3.12命令链接为python3
 RUN ln -s /usr/bin/python3.12 /usr/bin/python3
 
-# 安装PyTorch带有GPU支持
-# 请根据您的CUDA版本选择合适的PyTorch安装命令
-# 例如，如果您使用的是CUDA 11.8，请使用以下命令
-RUN python3 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
+# 安装PyTorch带有GPU支持（适配CUDA 12.6）
+RUN python3 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cu121
 
 # 安装其他库
 RUN python3 -m pip install numpy opencv-python pydantic fastapi uvicorn requests

@@ -1,7 +1,7 @@
 # 使用带有CUDA 12.6支持的NVIDIA CUDA基础镜像
 # FROM nvidia/cuda:12.6.0-base-ubuntu20.04
 # FROM nvidia/cuda:12.6.0-cudnn8-runtime-ubuntu20.04
-FROM nvidia-cuda
+FROM nvidia/cuda:v1
 
 # 设置工作目录
 WORKDIR /app
